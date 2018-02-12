@@ -1,1 +1,370 @@
+import java.io.*;
+import java.util.StringTokenizer;
+public class Simulator {
+	static int weapon_type;
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		// Player 1
+		// Player Statistics
+		System.out.println("EFFECTIVE: Strength/Dex/Int:");
+		double[] Stats = new double[3];
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < 3; i++) Stats[i] = Double.parseDouble(st.nextToken())*1.0;
+		/* None = 0
+		 * Minimal = 0.5
+		 * Poor = 0.75
+		 * Average = 1
+		 * Good = 1.5
+		 * Excellent = 2
+		 * Slash Damage = 1
+		 * Pierce Damage = 2
+		 * Bludgeon Damage = 3
+		 * S/P = 4
+		 * S/B = 5
+		 * P/B = 6
+		 * S/P/B = 7
+		 */
+		System.out.println("Two-Handed Weapon (1) or Two One-Handed Weapons (2): ");
+		weapon_type = Integer.parseInt(br.readLine());
+		// Main hand
+		System.out.println("MAIN HAND: "
+				+ "Number of Dice/ "
+				+ "Number of Faces/ "
+				+ "Damage Type/ "
+				+ "Crit Chance(Effective)/ "
+				+ "Crit Multiplier/ "
+				+ "Block Chance/ "
+				+ "Damage Reduction/ "
+				+ "Bludge Resist/ "
+				+ "Pierce Resist/ "
+				+ "Slash Resist:");
+		st = new StringTokenizer(br.readLine());
+		// Array storing stats of main weapon
+		double[] Main_Hand = new double[9];
+		for (int i = 0; i < Main_Hand.length; i++) Main_Hand[i] = Double.parseDouble(st.nextToken());
+		// Off hand
+		if (weapon_type == 2) {
+			System.out.println("If shield, enter 1. Else, enter 2:");
+			double a = Double.parseDouble(br.readLine());
+			int q = 0;
+			if (a == 1) q = 5;
+			else if (a == 2) q = 9;
+			// Array storing stats of off hand
+			double[] Off_Hand = new double[q];
+			if (a == 1) {
+				System.out.println("OFF HAND: "
+						+ "Block Chance/ "
+						+ "Bludge Resist/ "
+						+ "Pierce Resist/ "
+						+ "Slash Resist:");
+				st = new StringTokenizer(br.readLine());
+				for (int i = 0; i < Off_Hand.length; i++) Off_Hand[i] = Double.parseDouble(st.nextToken());
+			} else if (a == 2) {
+				System.out.println("OFF HAND: "
+						+ "Number of Dice/ "
+						+ "Number of Faces/ "
+						+ "Damage Type/ "
+						+ "Crit Chance(Effective)/ "
+						+ "Crit Multiplier/ "
+						+ "Block Chance/ "
+						+ "Damage Reduction/ "
+						+ "Bludge Resist/ "
+						+ "Pierce Resist/ "
+						+ "Slash Resist:");
+				st = new StringTokenizer(br.readLine());
+				for (int i = 0; i < Off_Hand.length; i++) Off_Hand[i] = Double.parseDouble(st.nextToken());
+			}
+		}
+		// Helmet
+		double[] helm = new double[5];
+		System.out.println("Helmet Stats: "
+				+ "Block Chance/ "
+				+ "Damage Reduction/ "
+				+ "Bludge Resist/ "
+				+ "Pierce Resist/ "
+				+ "Slash Resist");
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < helm.length; i++) helm[i] = Double.parseDouble(st.nextToken());
 
+		// ChestPiece
+		double[] chest = new double[5];
+		System.out.println("ChestPiece Stats: "
+				+ "Block Chance/ "
+				+ "Damage Reduction/ "
+				+ "Bludge Resist/ "
+				+ "Pierce Resist/ "
+				+ "Slash Resist");
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < chest.length; i++) chest[i] = Double.parseDouble(st.nextToken());
+
+		// Shirt
+		double[] shirt = new double[5];
+		System.out.println("ChestPiece Stats: "
+				+ "Block Chance/ "
+				+ "Damage Reduction/ "
+				+ "Bludge Resist/ "
+				+ "Pierce Resist/ "
+				+ "Slash Resist");
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < shirt.length; i++) shirt[i] = Double.parseDouble(st.nextToken());
+
+		// Gloves
+		double[] gloves = new double[5];
+		System.out.println("Gloves Stats: "
+				+ "Block Chance/ "
+				+ "Damage Reduction/ "
+				+ "Bludge Resist/ "
+				+ "Pierce Resist/ "
+				+ "Slash Resist");
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < gloves.length; i++) gloves[i] = Double.parseDouble(st.nextToken());
+
+		// Pants
+		double[] pants = new double[5];
+		System.out.println("Pants Stats: "
+				+ "Block Chance/ "
+				+ "Damage Reduction/ "
+				+ "Bludge Resist/ "
+				+ "Pierce Resist/ "
+				+ "Slash Resist");
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < pants.length; i++) pants[i] = Double.parseDouble(st.nextToken());
+
+		// Boots
+		double[] boots = new double[5];
+		System.out.println("Boots Stats: "
+				+ "Block Chance/ "
+				+ "Damage Reduction/ "
+				+ "Bludge Resist/ "
+				+ "Pierce Resist/ "
+				+ "Slash Resist");
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < boots.length; i++) boots[i] = Double.parseDouble(st.nextToken());
+
+		// PLAYER 2
+		System.out.println("EFFECTIVE: Strength/Dex/Int:");
+		double[] Stats_2 = new double[3];
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < 3; i++) Stats_2[i] = Double.parseDouble(st.nextToken());
+		// Main hand
+		System.out.println("MAIN HAND: "
+				+ "Number of Dice/ "
+				+ "Number of Faces/ "
+				+ "Damage Type/ "
+				+ "Crit Chance(Effective)/ "
+				+ "Crit Multiplier/ "
+				+ "Block Chance/ "
+				+ "Damage Reduction/ "
+				+ "Bludge Resist/ "
+				+ "Pierce Resist/ "
+				+ "Slash Resist:");
+		st = new StringTokenizer(br.readLine());
+		// Array storing stats of main weapon
+		double[] Main_Hand_2 = new double[9];
+		for (int i = 0; i < Main_Hand_2.length; i++) Main_Hand_2[i] = Double.parseDouble(st.nextToken());
+		// Off hand
+		System.out.println("If shield, enter 1. Else, enter 2:");
+		double b = Double.parseDouble(br.readLine());
+		int p = 0;
+		if (b == 1) p = 5;
+		else if (b == 2) p = 9;
+		// Array storing stats of off hand
+		double[] Off_Hand_2 = new double[p];
+		if (b == 1) {
+			System.out.println("OFF HAND: "
+					+ "Block Chance/ "
+					+ "Damage Reduction/ "
+					+ "Bludge Resist/ "
+					+ "Pierce Resist/ "
+					+ "Slash Resist:");
+			st = new StringTokenizer(br.readLine());
+			for (int i = 0; i < Off_Hand_2.length; i++) Off_Hand_2[i] = Double.parseDouble(st.nextToken());
+		} else if (b == 2) {
+			System.out.println("OFF HAND: "
+					+ "Number of Dice/ "
+					+ "Number of Faces/ "
+					+ "Damage Type/ "
+					+ "Crit Chance(Effective)/ "
+					+ "Crit Multiplier/ "
+					+ "Block Chance/ "
+					+ "Damage Reduction/ "
+					+ "Bludge Resist/ "
+					+ "Pierce Resist/ "
+					+ "Slash Resist:");
+			st = new StringTokenizer(br.readLine());
+			for (int i = 0; i < Off_Hand_2.length; i++) Off_Hand_2[i] = Double.parseDouble(st.nextToken());
+		}
+		// Helmet
+		double[] helm_2 = new double[5];
+		System.out.println("Helmet Stats: "
+				+ "Block Chance/ "
+				+ "Damage Reduction/ "
+				+ "Bludge Resist/ "
+				+ "Pierce Resist/ "
+				+ "Slash Resist");
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < helm_2.length; i++) helm_2[i] = Double.parseDouble(st.nextToken());
+
+		// ChestPiece
+		double[] chest_2 = new double[5];
+		System.out.println("ChestPiece Stats: "
+				+ "Block Chance/ "
+				+ "Damage Reduction/ "
+				+ "Bludge Resist/ "
+				+ "Pierce Resist/ "
+				+ "Slash Resist");
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < chest_2.length; i++) chest_2[i] = Double.parseDouble(st.nextToken());
+
+		// Shirt
+		double[] shirt_2 = new double[5];
+		System.out.println("ChestPiece Stats: "
+				+ "Block Chance/ "
+				+ "Damage Reduction/ "
+				+ "Bludge Resist/ "
+				+ "Pierce Resist/ "
+				+ "Slash Resist");
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < shirt_2.length; i++) shirt_2[i] = Double.parseDouble(st.nextToken());
+		// Gloves
+		double[] gloves_2 = new double[5];
+		System.out.println("Gloves Stats: "
+				+ "Block Chance/ "
+				+ "Damage Reduction/ "
+				+ "Bludge Resist/ "
+				+ "Pierce Resist/ "
+				+ "Slash Resist");
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < gloves_2.length; i++) gloves_2[i] = Double.parseDouble(st.nextToken());
+
+		// Pants
+		double[] pants_2 = new double[5];
+		System.out.println("Pants Stats: "
+				+ "Block Chance/ "
+				+ "Damage Reduction/ "
+				+ "Bludge Resist/ "
+				+ "Pierce Resist/ "
+				+ "Slash Resist");
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < pants_2.length; i++) pants_2[i] = Double.parseDouble(st.nextToken());
+
+		// Boots
+		double[] boots_2 = new double[5];
+		System.out.println("Boots Stats: "
+				+ "Block Chance/ "
+				+ "Damage Reduction/ "
+				+ "Bludge Resist/ "
+				+ "Pierce Resist/ "
+				+ "Slash Resist");
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < boots_2.length; i++) boots_2[i] = Double.parseDouble(st.nextToken());
+
+		// Combat Simulation
+		boolean player1 = true, player2 = true;
+		while (player1 && player2) {
+			// roll dexterity to determine hit or miss
+			double player1_dex = random(Stats[1]);
+			double player2_dex = random(Stats[1]);
+
+			// Determine whether hit or not for P1
+			boolean Player1_hit = false;
+			if (player1_dex > player2_dex) Player1_hit = true;
+			if (Player1_hit) {
+				int damage = damage(Main_Hand[0], Main_Hand[1], Main_Hand[3], Main_Hand[4], Stats[0]); // rolls damage dealt (unblocked)
+				double where = random(100); // this variable determines whether it hits chest/legs/helm etc.
+				/* if damage type is slash, then:
+				 * reduce damage by armors damage reduction times resistance
+				 * damage -= DR*Resist
+				 * repeat for all types of damage
+				 */
+				if (Main_Hand[2] == 1) {
+					if (block(Main_Hand[5])) damage -= Main_Hand[6]*Main_Hand[9];
+					if (where > 50) {
+						if (block(chest[0])) damage -= chest[1]*chest[4];
+						if (block(shirt[0])) damage -= shirt[1]*shirt[4];
+					} 
+					else if (where > 20) {
+						if (block(pants[0])) damage -= pants[1]*pants[4];
+					}
+					else if (where > 10) {
+						if (block(helm[0])) damage -= helm[1]*helm[4];
+					}
+					else if (where > 5) {
+						if (block(gloves[0])) damage -= gloves[1]*gloves[4];
+					}
+					else if (where > 0) {
+						if (block(boots[0])) damage -= boots[1]*gloves[4];
+					}
+				}
+				else if (Main_Hand[2] == 2) {
+					if (block(Main_Hand[5])) damage -= Main_Hand[6]*Main_Hand[8];
+					if (where > 50) {
+						if (block(chest[0])) damage -= chest[1]*chest[3];
+						if (block(shirt[0])) damage -= shirt[1]*shirt[3];
+					} 
+					else if (where > 20) {
+						if (block(pants[0])) damage -= pants[1]*pants[3];
+					}
+					else if (where > 10) {
+						if (block(helm[0])) damage -= helm[1]*helm[3];
+					}
+					else if (where > 5) {
+						if (block(gloves[0])) damage -= gloves[1]*gloves[3];
+					}
+					else if (where > 0) {
+						if (block(boots[0])) damage -= boots[1]*gloves[3];
+					}
+				}
+				else if (Main_Hand[2] == 3) {
+					if (block(Main_Hand[5])) damage -= Main_Hand[6]*Main_Hand[7];
+					if (where > 50) {
+						if (block(chest[0])) damage -= chest[1]*chest[2];
+						if (block(shirt[0])) damage -= shirt[1]*shirt[2];
+					} 
+					else if (where > 20) {
+						if (block(pants[0])) damage -= pants[1]*pants[2];
+					}
+					else if (where > 10) {
+						if (block(helm[0])) damage -= helm[1]*helm[2];
+					}
+					else if (where > 5) {
+						if (block(gloves[0])) damage -= gloves[1]*gloves[2];
+					}
+					else if (where > 0) {
+						if (block(boots[0])) damage -= boots[1]*gloves[2];
+					}
+				}
+				else if (Main_Hand[2] == 4) {
+					
+				}
+			}
+		}
+	}
+	public static double random(double max) {
+		return Math.random() * max;
+	}
+	public static boolean block(double block_chance) {
+		double a = random(block_chance);
+		if (a > block_chance) return false;
+		return true;
+	}
+	public static int damage(double die, double faces, double crit, double crit_multi, double str) {
+		int total = 0;
+		int a = (int)random(die);
+		double b = random(101);
+		int strength_bonus = 0;
+		if (weapon_type == 1) strength_bonus = (int) (((str - 3) * 2) * 1.5);
+		else if (weapon_type == 1) strength_bonus = (int) ((str - 3) * 2);
+
+		boolean flag = false;
+		if (b > 100 - crit)  flag = true;
+		for (int i = 0; i < a; i++) {
+			int c = (int)random(faces);
+			if (flag) total += c*crit_multi + strength_bonus;
+			else total += c + strength_bonus;
+		}
+		return total;
+	}
+
+}
